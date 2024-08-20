@@ -3,7 +3,12 @@ import * as React from "react"
 import { cn } from "~/lib/utils"
 
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+
+  // Kept available for additional custom properties
+
+  _dummy?: never; // Resolves Error: An interface declaring no members is equivalent to its supertype.  @typescript-eslint/no-empty-object-type
+}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {

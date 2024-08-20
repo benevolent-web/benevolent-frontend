@@ -63,7 +63,6 @@
   * {
     @apply border-border;
   }
-<<<<<<< HEAD
 
   body {
     @apply bg-background text-foreground;
@@ -96,9 +95,4 @@
 
 ::-webkit-scrollbar-track-piece {
   display: none;
-=======
-  body {
-    @apply bg-background text-foreground;
-  }
->>>>>>> main
 }

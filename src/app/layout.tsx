@@ -35,16 +35,12 @@ export default function RootLayout({
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-<<<<<<< HEAD
           >
             <GradientSphereBackground />
             <AppBar />
             <main>
               {children}
             </main>
-=======
-          >{children}
->>>>>>> main
           </ThemeProvider>
         </TRPCReactProvider>
       </body>

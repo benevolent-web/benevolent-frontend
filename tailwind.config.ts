@@ -7,7 +7,11 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+<<<<<<< HEAD
   ],
+=======
+	],
+>>>>>>> main
   prefix: "",
   theme: {
     container: {
@@ -52,12 +56,15 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+<<<<<<< HEAD
         'benevolent-navy': '#131620',
         'benevolent-navy-light': '#303753',
         'benevolent-cream': '#E5DDC6',
       },
       fontFamily: {
         'pt-serif': ['var(--font-pt-serif)', 'serif'],
+=======
+>>>>>>> main
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -77,6 +84,7 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+<<<<<<< HEAD
       },
       containerQueries: {
         's': '640px',
@@ -97,6 +105,12 @@ const config = {
       })
     }
   ],
+=======
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+>>>>>>> main
 } satisfies Config
 
 export default config

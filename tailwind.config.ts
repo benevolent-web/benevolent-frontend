@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -52,6 +52,12 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        'benevolent-navy': '#131620',
+        'benevolent-navy-light': '#303753',
+        'benevolent-cream': '#E5DDC6',
+      },
+      fontFamily: {
+        'pt-serif': ['var(--font-pt-serif)', 'serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -72,9 +78,25 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      containerQueries: {
+        's': '640px',
+      },
+      backgroundImage: {
+        'gradient-radial-light': 'radial-gradient(circle, var(--tw-gradient-stops))',
+        'gradient-radial-dark': 'radial-gradient(circle, var(--tw-gradient-stops))',
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addBase }: { addBase: Function }) {
+      addBase({
+        'svg': {
+          color: 'hsl(var(--foreground))',
+        },
+      })
+    }
+  ],
 } satisfies Config
 
 export default config

@@ -1,15 +1,15 @@
 "use client";
 import React, { useRef, useEffect } from 'react';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Layers, Code, Server, Smartphone, Database, ArrowRight } from 'lucide-react';
+import AnimatedCard from '~/components/features/cards/animated-card';
 
-type TService = {
-  title: string;
-  description: string;
-  icon: React.JSX.Element;
-}
+gsap.registerPlugin(ScrollTrigger);
 
-const services: TService[] = [
+
+// TODO: Update these sections
+const services: TCardProps[] = [
   {
     title: 'Web3 Integrations',
     description: 'Seamlessly incorporate blockchain technology into your existing digital infrastructure.',
@@ -42,34 +42,38 @@ const services: TService[] = [
   },
 ];
 
-const ServiceCard = ({ key, service }: { key: string, service: TService }) => {
-  const [animationParent] = useAutoAnimate();
-
-  return (
-    <div
-      ref={animationParent}
-      key={key}
-      className="bg-card p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:scale-105"
-    >
-      <div className="flex items-center mb-4">
-        {service.icon}
-        <h3 className="text-xl font-semibold ml-3">{service.title}</h3>
-      </div>
-      <p>{service.description}</p>
-    </div>
-  );
-};
-
 const ServicesSection = () => {
-  const [animationParent] = useAutoAnimate();
+  const sectionRef = useRef(null);
+
+  // TODO: add parralax scrolling
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(".service-card",
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.2,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top center+=100",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="py-16">
+    <section ref={sectionRef} className="py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold mb-12 text-center">Our Services</h2>
-        <div ref={animationParent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ServiceCard key={`service-${index}`} service={service} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((cardProps, index) => (
+            <AnimatedCard key={`service-${index}`} cardProps={cardProps} />
           ))}
         </div>
       </div>

@@ -32,10 +32,11 @@ const HeroSection: React.FC = () => {
     );
 
     // Timeline for phrase animations
-    const phraseTl = gsap.timeline({ repeat: -1 });
+    const phraseTl = gsap.timeline({ repeat: -1, repeatDelay: 0.15 });
 
     phrases.forEach((phrase, index) => {
       phraseTl
+        .add(() => setCurrentPhraseIndex(index))
         // Fade in from left
         .from(phraseRef.current, {
           duration: 0.25,
@@ -50,7 +51,7 @@ const HeroSection: React.FC = () => {
         })
         // Pause
         .to(phraseRef.current, {
-          duration: 1, // Adjust this value to change the pause duration
+          duration: 1.5, // Adjust this value to change the pause duration
           opacity: 1,
           x: 0
         })
@@ -59,8 +60,7 @@ const HeroSection: React.FC = () => {
           duration: 0.1,
           opacity: 0,
           x: 100
-        })
-        .to({}, { duration: 0.1 });
+        });
     });
 
     // Check for reduced motion preference

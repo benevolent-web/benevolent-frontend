@@ -7,7 +7,7 @@ import { PT_Serif } from 'next/font/google'
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
-import AppBar from "~/components/layout/app-bar";
+import AppBar from "~/app/_components/layout/app-bar";
 import GradientSphereBackground from "~/components/layout/gradient-sphere-background";
 
 export const metadata: Metadata = {

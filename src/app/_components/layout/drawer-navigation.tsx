@@ -4,14 +4,17 @@ import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { Button } from "~/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
-import { cn } from "~/lib/utils";
 
-const NAV_ITEMS = [
+type TNavItems = {
+  label: string;
+  href: string;
+  disabled?: boolean;
+}
+
+const NAV_ITEMS: TNavItems[] = [
   { label: 'Home', href: '/' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Services', href: '/services' },
-  { label: 'News', href: '/news' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Services', href: '/services', disabled: true },
+  { label: 'Portfolio', href: '/portfolio', disabled: true }
 ];
 
 const DrawerNavigation = () => {
@@ -49,22 +52,22 @@ const DrawerNavigation = () => {
             <ul className="p-4 space-y-2">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className={cn(
-                      "block py-2 px-4 text-lg hover:bg-gray-100 rounded-md transition-colors",
-                      item.label === 'Portfolio' && "text-gray-500"
-                    )}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </a>
+                  {item.disabled
+                    ? <div className="block py-2 px-4 text-lg rounded-md transition-colors text-gray-500">{item.label}</div>
+                    : <a
+                      href={item.href}
+                      className="block py-2 px-4 text-lg rounded-md transition-colors hover:bg-accent"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  }
                 </li>
               ))}
             </ul>
           </nav>
           <div className="p-4 border-t">
-            <Button className="w-full" variant="outline">Start a Project</Button>
+            <Button className="w-full" variant="outline">Get a Quote</Button>
           </div>
           <div className="p-4 text-sm text-gray-500">
             <div>Benevolent Apps</div>

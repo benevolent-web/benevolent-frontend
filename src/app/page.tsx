@@ -7,6 +7,8 @@ import {
   // api, 
   HydrateClient
 } from "~/trpc/server";
+import HeroSection from "./_components/landing/hero-section";
+import ServicesSection from "./_components/landing/services-section";
 
 export default async function Home() {
   // const hello = await api.post.hello({ text: "from tRPC" });
@@ -16,12 +18,8 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <div className="flex min-h-[calc(100vh-96px)] flex-col items-center justify-center">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Welcome to Benevolent
-          </h1>
-          {/* 
+      <HeroSection />
+      {/* 
           <div className="flex flex-col items-center gap-2">
             <p className="text-2xl text-white">
               {hello ? hello.greeting : "Loading tRPC query..."}
@@ -41,8 +39,7 @@ export default async function Home() {
           </div>
 
           {session?.user && <LatestPost />} */}
-        </div>
-      </div>
+      <ServicesSection />
     </HydrateClient>
   );
 }

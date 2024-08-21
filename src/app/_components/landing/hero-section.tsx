@@ -59,7 +59,8 @@ const HeroSection: React.FC = () => {
           duration: 0.1,
           opacity: 0,
           x: 100
-        });
+        })
+        .to({}, { duration: 0.1 });
     });
 
     // Check for reduced motion preference

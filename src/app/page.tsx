@@ -1,14 +1,11 @@
-// import Link from "next/link";
-
-// import { LatestPost } from "~/app/_components/post";
-// import { DarkModeToggle } from "~/components/ui/dark-mode-toggle";
-// import { getServerAuthSession } from "~/server/auth";
 import {
   // api, 
   HydrateClient
 } from "~/trpc/server";
 import HeroSection from "./_components/landing/hero-section";
 import ServicesSection from "./_components/landing/services-section";
+import HookSection from "./_components/landing/hook-section";
+import CustomerProfileSection from "./_components/landing/customer-profile-section";
 
 export default async function Home() {
   // const hello = await api.post.hello({ text: "from tRPC" });
@@ -19,6 +16,8 @@ export default async function Home() {
   return (
     <HydrateClient>
       <HeroSection />
+      <HookSection />
+      <CustomerProfileSection />
       {/* 
           <div className="flex flex-col items-center gap-2">
             <p className="text-2xl text-white">
@@ -40,6 +39,9 @@ export default async function Home() {
 
           {session?.user && <LatestPost />} */}
       <ServicesSection />
+      <div className="h-[1000px]">
+
+      </div>
     </HydrateClient>
   );
 }

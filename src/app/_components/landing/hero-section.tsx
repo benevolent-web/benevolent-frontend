@@ -132,7 +132,7 @@ const HeroSection: React.FC = () => {
             <img
               ref={imageRef}
               // TODO: Add a better image
-              src="/benevolent-transparent.png"
+              src="/images/Blockchain--Streamline-Lagos.png"
               alt="Hero"
               className="rounded-lg w-full h-auto transform-style-3d"
             />

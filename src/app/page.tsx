@@ -38,10 +38,7 @@ export default async function Home() {
           </div>
 
           {session?.user && <LatestPost />} */}
-      <ServicesSection />
-      <div className="h-[1000px]">
-
-      </div>
+      {/* <ServicesSection /> */}
     </HydrateClient>
   );
 }

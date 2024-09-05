@@ -6,6 +6,8 @@ import { cn } from "~/lib/utils";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export interface CustomerProfileItemProps {
   userProfile: string;
   title: string;
@@ -34,39 +36,44 @@ const CustomerProfileItem: React.FC<CustomerProfileItemProps> = ({
     const parallaxItem = parallaxRef.current;
     const oppositeParallaxItem = oppositeParallaxRef.current;
     const parallaxIntensity = reversed ? -10 : 10;
-    if (!parallaxItem) return;
 
-    gsap.fromTo(parallaxItem,
-      {
-        xPercent: parallaxIntensity,
-        opacity: 0.5
-      },
-      {
-        xPercent: 0,
-        opacity: 1,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: parallaxItem,
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse"
-        }
-      });
+    if (!parallaxItem || !oppositeParallaxItem) return;
 
-    gsap.fromTo(oppositeParallaxItem,
-      {
-        xPercent: -parallaxIntensity,
-        opacity: 0.5
-      },
-      {
-        xPercent: 0,
-        opacity: 1,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: oppositeParallaxItem,
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse"
-        }
-      });
+    const ctx = gsap.context(() => {
+      gsap.fromTo(parallaxItem,
+        {
+          xPercent: parallaxIntensity,
+          opacity: 0.5
+        },
+        {
+          xPercent: 0,
+          opacity: 1,
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: parallaxItem,
+            start: "top bottom-=100",
+            toggleActions: "play none none reset"
+          }
+        });
+
+      gsap.fromTo(oppositeParallaxItem,
+        {
+          xPercent: -parallaxIntensity,
+          opacity: 0.5
+        },
+        {
+          xPercent: 0,
+          opacity: 1,
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: oppositeParallaxItem,
+            start: "top bottom-=100",
+            toggleActions: "play none none reset"
+          }
+        });
+    });
+
+    return () => ctx.revert();
   }, []);
 
   return (

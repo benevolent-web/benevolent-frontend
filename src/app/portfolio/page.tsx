@@ -11,7 +11,7 @@ import CaseStudyCard from '~/components/features/cards/case-study-card';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const caseStudies: TCaseStudyCardProps[] = [
+const caseStudies: TCaseStudyCardProps[] = [
   {
     title: 'Paideia: DAO Management Software',
     description: 'From UX/UI prototypes to full app development with extensive web3 infrastructure',

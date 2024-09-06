@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { DarkModeToggle } from '~/components/ui/dark-mode-toggle';
 import DrawerNavigation from '~/app/_components/layout/drawer-navigation';
 import { Logos } from '~/components/logo';
+import Link from 'next/link';
 
 const AppBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,10 +26,12 @@ const AppBar = () => {
       }`}>
       <div className="flex justify-between items-center p-4">
         {/* Logo */}
-        <div className="flex items-center">
-          <Logos.logomark className="h-[3rem] w-[3rem]" />
-          <span className="font-pt-serif text-3xl pl-2 hidden md:block">Benevolent</span>
-        </div>
+        <Link href={'/'}>
+          <div className="flex items-center">
+            <Logos.logomark className="h-[3rem] w-[3rem]" />
+            <span className="font-pt-serif text-3xl pl-2 hidden md:block">Benevolent</span>
+          </div>
+        </Link>
         {/* Right side: Menu and Dark Mode Toggle */}
         <div className="flex items-center space-x-4">
           <DarkModeToggle />

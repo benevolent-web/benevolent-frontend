@@ -1,20 +1,16 @@
-import {
-  // api, 
-  HydrateClient
-} from "~/trpc/server";
 import HeroSection from "./_components/landing/hero-section";
-import ServicesSection from "./_components/landing/services-section";
+// import ServicesSection from "./_components/landing/services-section";
 import HookSection from "./_components/landing/hook-section";
 import CustomerProfileSection from "./_components/landing/customer-profile-section";
 
-export default async function Home() {
+export default function Home() {
   // const hello = await api.post.hello({ text: "from tRPC" });
   // const session = await getServerAuthSession();
 
   // void api.post.getLatest.prefetch();
 
   return (
-    <HydrateClient>
+    <>
       <HeroSection />
       <HookSection />
       <CustomerProfileSection />
@@ -39,6 +35,6 @@ export default async function Home() {
 
           {session?.user && <LatestPost />} */}
       {/* <ServicesSection /> */}
-    </HydrateClient>
+    </>
   );
 }

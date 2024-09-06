@@ -84,7 +84,7 @@ const CustomerProfileItem: React.FC<CustomerProfileItemProps> = ({
       <div className={cn("w-full md:w-1/2 space-y-6",
         reversed && "md:pl-16"
       )} ref={oppositeParallaxRef}>
-        <p className="text-sm uppercase tracking-wider">{userProfile}</p>
+        <p className="text-sm uppercase tracking-wider text-muted-foreground">{userProfile}</p>
         <h2 className="text-4xl font-bold">{title}</h2>
         <p className="text-xl">{subtitle}</p>
         <ul className="space-y-2">

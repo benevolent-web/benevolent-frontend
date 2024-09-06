@@ -1,5 +1,9 @@
 import "~/styles/globals.css";
 import { ThemeProvider } from "~/components/theme-provider"
+import {
+  // api, 
+  HydrateClient
+} from "~/trpc/server";
 
 import { GeistSans } from "geist/font/sans";
 import { PT_Serif } from 'next/font/google'
@@ -37,12 +41,16 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <GradientSphereBackground />
-            <AppBar />
-            <main>
-              {children}
-            </main>
-            <Footer />
+            <HydrateClient>
+              <GradientSphereBackground />
+              <AppBar />
+              <div className="flex flex-col justify-between min-h-screen pt-16">
+                <main>
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </HydrateClient>
           </ThemeProvider>
         </TRPCReactProvider>
       </body>

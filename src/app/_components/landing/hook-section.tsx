@@ -8,7 +8,7 @@ const HookSection: React.FC = () => {
         <h2 className="text-5xl font-bold text-center mb-8">
           Looking for software built to last, not just to launch?
         </h2>
-        <p className="text-xl text-center mb-8">
+        <p className="text-xl text-center mb-8 text-muted-foreground">
           Benevolent builds secure, scalable solutions tailored to your vision and budget
         </p>
       </div>

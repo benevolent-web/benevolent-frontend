@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { Button } from "~/components/ui/button";
+import Link from 'next/link';
 
 gsap.registerPlugin(TextPlugin);
 
@@ -114,7 +115,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+      <div className="container flex flex-col items-center justify-center gap-12 px-4">
         <div className="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center">
           {/* Left side: Content */}
           <div ref={contentRef} className="md:w-1/2 mb-8 md:mb-0">
@@ -124,8 +125,9 @@ const HeroSection: React.FC = () => {
                 {phrases[currentPhraseIndex]}
               </span>
             </h1>
-            <p className="text-lg md:text-xl mb-6">Empowering your vision with cutting-edge solutions and expertise.</p>
-            <Button size="lg">Get Started</Button>
+            <p className="text-lg md:text-xl mb-6 text-muted-foreground">Empowering your vision with cutting-edge solutions and expertise.</p>
+            <Button size="lg" className="mr-4">Get Started</Button>
+            <Button size="lg" asChild><Link href={'/portfolio'}>See Our Work</Link></Button>
           </div>
           {/* Right side: Image */}
           <div ref={imageContainerRef} className="md:w-1/2 perspective-1000">
